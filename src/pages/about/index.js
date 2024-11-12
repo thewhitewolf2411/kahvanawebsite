@@ -52,9 +52,6 @@ const AboutUs = () => {
             network engineers, and cybersecurity specialists, we've successfully
             streamlined operations and enhanced security for our clients."
           </Typography>
-          <Typography variant="body2" sx={{ opacity: 0.8 }}>
-            Scroll down to meet us ↓
-          </Typography>
         </TextBox>
 
         {/* Right Side - Image */}
