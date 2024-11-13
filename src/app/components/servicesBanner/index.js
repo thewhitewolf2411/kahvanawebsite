@@ -23,9 +23,6 @@ const ServiceBox = styled(Box)(({ theme }) => ({
     backgroundColor: '#381e78',
     borderRadius: theme.shape.borderRadius * 2,
     color: '#FFFFFF',
-    '& img': {
-      filter: 'brightness(0) invert(1)', // Inverts icon color to white
-    },
   },
   // Add responsive width using the sx prop for different breakpoints
   [theme.breakpoints.down('sm')]: {

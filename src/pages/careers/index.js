@@ -56,51 +56,51 @@ const CareersPage = () => {
         {language === "bh" ? "Karijera" : "Careers"}
       </DividerText>
 
-      <Box display="flex" sx={{padding: "24px"}}>
+      <Box sx={{display: "flex", flexDirection: { xs: "column", md: "row" }, padding: "24px"}}>
 
-      <Box display="flex" justifyContent="center" gap={4} my={4} flexWrap="wrap">
-        <JobCard elevation={3}>
-          <Box>
-            <Typography variant="h6" fontWeight="bold">
-              {language === "bh" ? "Full Stack" : "Full Stack"}
-            </Typography>
-            <Typography variant="body2">
-              {language === "bh" ? "J/M/S - Puno radno vrijeme" : "J/M/S - Full time"}
-            </Typography>
-          </Box>
-          <ApplyButton onClick={handleApplyOnClick} variant="contained">
-            {language === "bh" ? "Prijavi se sada" : "Apply now"}
-          </ApplyButton>
-        </JobCard>
+        <Box display="flex" justifyContent="center" gap={4} my={4} flexWrap="wrap">
+          <JobCard elevation={3}>
+            <Box>
+              <Typography variant="h6" fontWeight="bold">
+                {language === "bh" ? "Full Stack" : "Full Stack"}
+              </Typography>
+              <Typography variant="body2">
+                {language === "bh" ? "J/M/S - Puno radno vrijeme" : "J/M/S - Full time"}
+              </Typography>
+            </Box>
+            <ApplyButton onClick={handleApplyOnClick} variant="contained">
+              {language === "bh" ? "Prijavi se sada" : "Apply now"}
+            </ApplyButton>
+          </JobCard>
 
-        <JobCard elevation={3}>
-          <Box>
-            <Typography variant="h6" fontWeight="bold">
-              {language === "bh" ? "Marketing" : "Marketing"}
-            </Typography>
-            <Typography variant="body2">
-              {language === "bh" ? "J/M/S - Puno radno vrijeme" : "J/M/S - Full time"}
-            </Typography>
-          </Box>
-          <ApplyButton onClick={handleApplyOnClick} variant="contained">
-            {language === "bh" ? "Prijavi se sada" : "Apply now"}
-          </ApplyButton>
-        </JobCard>
+          <JobCard elevation={3}>
+            <Box>
+              <Typography variant="h6" fontWeight="bold">
+                {language === "bh" ? "Marketing" : "Marketing"}
+              </Typography>
+              <Typography variant="body2">
+                {language === "bh" ? "J/M/S - Puno radno vrijeme" : "J/M/S - Full time"}
+              </Typography>
+            </Box>
+            <ApplyButton onClick={handleApplyOnClick} variant="contained">
+              {language === "bh" ? "Prijavi se sada" : "Apply now"}
+            </ApplyButton>
+          </JobCard>
 
-        <JobCard elevation={3}>
-          <Box>
-            <Typography variant="h6" fontWeight="bold">
-              {language === "bh" ? "Opća prijava" : "General Application"}
-            </Typography>
-            <Typography variant="body2">
-              {language === "bh" ? "J/M/S - Puno radno vrijeme" : "J/M/S - Full time"}
-            </Typography>
-          </Box>
-          <ApplyButton onClick={handleApplyOnClick} variant="contained">
-            {language === "bh" ? "Prijavi se sada" : "Apply now"}
-          </ApplyButton>
-        </JobCard>
-      </Box>
+          <JobCard elevation={3}>
+            <Box>
+              <Typography variant="h6" fontWeight="bold">
+                {language === "bh" ? "Opća prijava" : "General Application"}
+              </Typography>
+              <Typography variant="body2">
+                {language === "bh" ? "J/M/S - Puno radno vrijeme" : "J/M/S - Full time"}
+              </Typography>
+            </Box>
+            <ApplyButton onClick={handleApplyOnClick} variant="contained">
+              {language === "bh" ? "Prijavi se sada" : "Apply now"}
+            </ApplyButton>
+          </JobCard>
+        </Box>
         {/* Mission Statement */}
         <Box maxWidth="600px" margin="0 auto" textAlign="left" p={4} sx={{display: "flex", alignItems: "center" }}>
           <Typography variant="body1" color="#fff">

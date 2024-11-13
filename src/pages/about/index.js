@@ -32,7 +32,6 @@ const ContentBox = styled(Container)(({ theme }) => ({
 
 const TextBox = styled(Box)(({ theme }) => ({
   color: '#FFFFFF',
-  maxWidth: 600,
 }));
 
 const AboutUs = () => {
@@ -43,7 +42,7 @@ const AboutUs = () => {
       <DividerText>
         {language === "bh" ? "O nama" : "About us"}
       </DividerText>
-      <ContentBox maxWidth="lg">
+      <ContentBox maxWidth="lg" sx={{pb: 0}}>
         {/* Left Side - Text */}
         <TextBox>
           {language === "bh" ? (
@@ -90,15 +89,9 @@ const AboutUs = () => {
             </>
           )}
         </TextBox>
-        {/* Right Side - Image */}
-        <Image
-          src={officeImg}
-          alt="Office"
-          style={{ width: '100%', height: 'auto', display: 'block' }}>
-        </Image>
       </ContentBox>
-      <ContentBox sx={{ mb: 16, mx: 2, padding: 2 }}>
-        <Box sx={{ backgroundColor: "#fff", padding: 2, borderRadius: 8, display: "flex", justifyContent: "center", width: "100%" }}>
+      <ContentBox sx={{ mb: 8, mx: 2, padding: 2, display: "flex", justifyContent: "center" }}>
+        <Box sx={{ borderRadius: 8, display: "flex", justifyContent: "center", alignItems: "center", width: "50%" }}>
           <Image
             src={signatureImg}
             alt="Signature"

@@ -14,10 +14,8 @@ const Footer = () => {
   const pages = [
     { name: language === "bh" ? "Affiliate" : "Affiliate", path: "/" },
     { name: language === "bh" ? bhStrings.home : enStrings.home, path: "/" },
-    { name: language === "bh" ? bhStrings.portfolio : enStrings.portfolio, path: "/portfolio" },
     { name: language === "bh" ? bhStrings.about : enStrings.about, path: "/about" },
     { name: language === "bh" ? bhStrings.careers : enStrings.careers, path: "/careers" },
-    { name: language === "bh" ? bhStrings.blog : enStrings.blog, path: "/blog" },
     { name: language === "bh" ? bhStrings.contact : enStrings.contact, path: "/#contact" }
   ];
 

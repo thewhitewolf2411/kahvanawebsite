@@ -30,7 +30,7 @@ const Header = styled('div')(({ theme, scrolled }) => ({
   [`&.${classes.root}`]: {
     backgroundColor: "#fff",
     width: "90% !important",
-    marginTop: theme.spacing(5),
+    marginTop: scrolled ? theme.spacing(0) : theme.spacing(5),
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: theme.shape.borderRadius * 2,
@@ -93,7 +93,7 @@ function ResponsiveAppBar() {
     >
       <Header maxWidth="xl" className={classes.root} scrolled={isSticky}>
         <Toolbar disableGutters sx={{ width: "100%", justifyContent: "space-between" }}>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -127,7 +127,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <Image src={logo} alt="Logo" width={122} height={38} />
+          <Image src={logo} alt="Logo" width={122} height={38} onClick={() => handleHeaderOptionClick("/")} style={{ cursor: "pointer" }}/>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button

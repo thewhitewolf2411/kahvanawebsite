@@ -107,10 +107,10 @@ const HomeBgImage = () => {
           </Typography>
         </Box>
         <Box mt={3} mb={3}>
-          <Typography variant="h5">
+          <Typography variant="h6">
             {language === "bh" ? bhStrings.homeSubtitle1 : enStrings.homeSubtitle1}
           </Typography>
-          <Typography variant="h5">
+          <Typography variant="h6">
             {language === "bh" ? bhStrings.homeSubtitle2 : enStrings.homeSubtitle2}
           </Typography>
         </Box>
