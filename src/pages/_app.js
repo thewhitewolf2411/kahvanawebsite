@@ -6,7 +6,7 @@ import Layout from "../app/components/layout"
 import theme from '../app/_global/theme'
 import { SidebarContext } from '../app/context/languageContext'
 import Head from 'next/head'
-import logo from '../app/_static/logo.png';
+import logo from '../app/_static/logoSmall.png';
 
 function MyApp({ Component, pageProps }) {
 
