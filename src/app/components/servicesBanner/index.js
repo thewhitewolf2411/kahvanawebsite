@@ -15,7 +15,7 @@ const ServiceBox = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   padding: theme.spacing(2),
   flex: 1,
-  width: '200px',
+  width: '100%', // Default width is 100% (to take full width on small screens)
   cursor: 'pointer',
   transition: 'all 0.3s ease',
   color: '#000000',
@@ -27,25 +27,51 @@ const ServiceBox = styled(Box)(({ theme }) => ({
       filter: 'brightness(0) invert(1)', // Inverts icon color to white
     },
   },
+  // Add responsive width using the sx prop for different breakpoints
+  [theme.breakpoints.down('sm')]: {
+    width: '150px', // Set width to 200px on small screens and up (sm and above)
+    maxWidth: '150px',
+  },
 }));
 
-const StyledLink = styled(Link)({
+const StyledLink = styled(Link)(({ theme }) =>({
   textDecoration: 'none',
   color: '#fff',
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '150px', // Set width to 200px on small screens and up (sm and above)
+  },
+}));
 
-const ServiceIcon = styled('img')({
+const ServiceIcon = styled('img')(({ theme }) =>({
   width: '100px',
   height: '100px',
   marginBottom: '1rem',
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '75px', // Set width to 200px on small screens and up (sm and above)
+    maxWidth: '75px',
+    height: '75px',
+  },
+}));
 
 const ServicesBanner = () => {
   const { language } = React.useContext(SidebarContext);
   const strings = language === "bh" ? bhStrings : enStrings;
 
   return (
-    <Box display="flex" justifyContent="space-around" mt={4} mb={4}>
+    <Box
+      justifyContent="space-around"
+      mt={4}
+      mb={4}
+      p={4}
+      sx={{
+        display: { xs: 'grid', sm: 'flex' },
+        flexWrap: 'wrap', // Allow wrapping of items to next line
+        flexDirection: { xs: 'column', sm: 'row' }, // Stack items vertically on small screens, row on larger screens
+        gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'none' },
+        gridGap: { xs: '20px', sm: 'none' },
+        width: { xs: '100%' }
+      }}
+    >
       <StyledLink href="/services/development">
         <ServiceBox>
           <ServiceIcon src={devIcon.src} alt="Development Icon" />

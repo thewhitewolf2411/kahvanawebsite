@@ -69,15 +69,27 @@ function App() {
   ];
 
   return (
-    <Box sx={{ display: 'flex', bgcolor: '#f6f6f6', px: 4 }}>
-      {/* Side Navigation */}
-      <Box sx={{ width: '15%', display: 'flex', flexDirection: 'column', alignItems: 'center', py: 5, marginRight: 2, minHeight: "600px" }}>
+    <Box sx={{ display: 'flex', bgcolor: '#f6f6f6', px: 4, flexDirection: { xs: 'column', sm: 'row' } }}>
+      {/* Side Navigation (Tabs) */}
+      <Box
+        sx={{
+          width: { xs: '100%', sm: '15%' },
+          display: 'flex',
+          flexDirection: { xs: 'row', sm: 'column' },
+          alignItems: 'center',
+          py: 5,
+          marginRight: 2,
+          minHeight: { xs: 'auto', sm: '600px' },
+          justifyContent: { xs: 'space-around', sm: 'flex-start' }, // Center on mobile
+          marginBottom: { xs: 2, sm: 0 }, // Add margin-bottom for mobile view
+        }}
+      >
         {tabs.map((tab, index) => (
           <Button
             key={tab.index}
             onClick={() => handleTabChange(index)}
             sx={{
-              position: 'relative', // To position the arrow
+              position: 'relative',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
@@ -92,28 +104,27 @@ function App() {
               borderRadius: 2,
               textTransform: 'none',
               padding: 0,
-              // Arrow style
               '&:hover::after': {
                 content: '""',
                 position: 'absolute',
-                right: '-20px', // Position it to the right of the button
+                right: '-20px',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 width: 0,
                 height: 0,
                 border: '10px solid transparent',
-                borderLeftColor: '#f0f0f0',
+                borderLeftColor: { sm: '#f0f0f0', xs: 'transparent' },
               },
               '&::after': {
                 content: '""',
                 position: 'absolute',
-                right: '-20px', // Position it to the right of the button
+                right: '-20px',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 width: 0,
                 height: 0,
                 border: '10px solid transparent',
-                borderLeftColor: selectedTab === tab.index ? '#e0e0e0' : 'transparent', // Color of the arrow
+                borderLeftColor: selectedTab === tab.index ? { sm: '#f0f0f0', xs: 'transparent' } : 'transparent',
               },
             }}
           >
@@ -122,7 +133,7 @@ function App() {
           </Button>
         ))}
       </Box>
-
+    
       {/* Content Area */}
       <Box sx={{ flex: 1, p: 0 }}>
         {/* Tab Content */}
@@ -130,10 +141,20 @@ function App() {
           <Typography variant="h4" sx={{ my: 6, textAlign: 'center', fontWeight: 600 }}>
             {selectedTab === 1 && (language === 'bh' ? 'Područija rada' : 'Areas of work')}
           </Typography>
-          
+    
           {selectedTab === 0 && (
             <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '400px', height: '600px', marginRight: '20px' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '400px',
+                  height: '600px',
+                  marginRight: '20px',
+                  display: { xs: 'none', sm: 'flex' }, // Hide on mobile
+                }}
+              >
                 <Box
                   component="img"
                   src={reviewsImg.src} // Replace with actual image link
@@ -141,14 +162,29 @@ function App() {
                   sx={{ borderRadius: '8px', width: '100%', maxWidth: '300px', height: '100%' }}
                 />
               </Box>
-              <Box sx={{ width: "100%" }}>
+    
+              <Box sx={{ width: '100%' }}>
                 <Typography variant="h4" sx={{ mb: 3, textAlign: 'center', fontWeight: 600 }}>
                   {language === 'bh' ? 'Povjerenje mnogih' : 'Trusted by many'}
                 </Typography>
                 {reviewers.map((reviewer, index) => (
-                  <Box key={index} onClick={() => window.open(reviewer.linkedin, "_blank")} sx={{ cursor: 'pointer', width: '100%', borderRadius: 2 }}>
-                    <Box sx={{ p: 1, display: 'flex', gap: 2, alignItems: 'center', backgroundColor: "#fff", mb: 2, borderRadius: 2 }}>
-                      <Avatar src={reviewer.avatar} sx={{ height: "150px", width: "150px" }} />
+                  <Box
+                    key={index}
+                    onClick={() => window.open(reviewer.linkedin, '_blank')}
+                    sx={{ cursor: 'pointer', width: '100%', borderRadius: 2 }}
+                  >
+                    <Box
+                      sx={{
+                        p: 1,
+                        display: 'flex',
+                        gap: 2,
+                        alignItems: 'center',
+                        backgroundColor: '#fff',
+                        mb: 2,
+                        borderRadius: 2,
+                      }}
+                    >
+                      <Avatar src={reviewer.avatar} sx={{ height: '150px', width: '150px' }} />
                       <Box>
                         <Typography variant="h6">{reviewer.name}</Typography>
                         <Typography variant="body2">{reviewer.title}</Typography>
@@ -162,21 +198,28 @@ function App() {
               </Box>
             </Box>
           )}
-
+    
           {selectedTab === 1 && (
             <Box>
               <Typography variant="body1">
-                {language === 'bh' ? 
-                  "Naša IT kompanija specijalizovana je za pružanje najsvježijih softverskih rješenja prilagođenih potrebama naših klijenata. Pružamo širok spektar usluga, uključujući razvoj aplikacija, web dizajn i razvoj, kao i implementaciju složenih IT infrastrukturnih rješenja." 
-                  : 
-                  "Our IT company specializes in delivering cutting-edge software solutions tailored to meet the specific needs of our clients. We provide a wide range of services, including custom application development, web design and development, as well as the implementation of complex IT infrastructure solutions."
-                }
+                {language === 'bh'
+                  ? 'Naša IT kompanija specijalizovana je za pružanje najsvježijih softverskih rješenja prilagođenih potrebama naših klijenata. Pružamo širok spektar usluga, uključujući razvoj aplikacija, web dizajn i razvoj, kao i implementaciju složenih IT infrastrukturnih rješenja.'
+                  : 'Our IT company specializes in delivering cutting-edge software solutions tailored to meet the specific needs of our clients. We provide a wide range of services, including custom application development, web design and development, as well as the implementation of complex IT infrastructure solutions.'}
               </Typography>
-
-              <Box py={4} sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "20px" }}>
+    
+              <Box py={4} sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '20px' }}>
                 {workAreas.map((work, i) => (
                   <Box key={i}>
-                    <Box sx={{ height: "200px", backgroundImage: `url(${portfolioCardBg.src})`, borderRadius: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        height: '200px',
+                        backgroundImage: `url(${portfolioCardBg.src})`,
+                        borderRadius: 2,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Image src={work.img.src} alt={work.name} objectFit="contain" width={100} height={100} />
                     </Box>
                     <Box elevation={0} sx={{ p: 2, textAlign: 'center' }}>
@@ -190,6 +233,7 @@ function App() {
         </Box>
       </Box>
     </Box>
+    
   );
 }
 

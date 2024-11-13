@@ -83,6 +83,7 @@ const WhyChooseUs = () => {
               sx={{
                 color: activeDot === index ? 'white' : 'gray',
                 mt: 1,
+                fontSize: { xs: '1rem', }
               }}
             >
               {titles[index]}
@@ -137,7 +138,7 @@ const WhyChooseUs = () => {
 
       {/* Content area with animated switch */}
       <Stack
-        direction={{ xs: 'column', md: 'row' }}
+        direction={{ xs: 'column', md: 'row' }} // Stacks vertically on mobile, horizontally on larger screens
         spacing={0}
         alignItems="center"
         justifyContent="center"
@@ -145,9 +146,12 @@ const WhyChooseUs = () => {
         <AnimatedBox
           sx={{
             flex: 1,
-            transform: activeDot === 1 ? 'translateX(100%)' : 'translateX(0)',
+            transform: activeDot === 1 
+              ? { xs: 'translateY(30%)', md: 'translateX(100%)' } // Move down on mobile, right on larger screens
+              : 'translateY(0)', // Reset position on mobile, default on larger screens
             opacity: activeDot === 1 ? 1 : 1,
             padding: 4,
+            transition: 'all 0.8s ease-in-out', // Ensure smooth transition
           }}
         >
           <Image
@@ -161,15 +165,19 @@ const WhyChooseUs = () => {
         <AnimatedBox
           sx={{
             flex: 1,
-            transform: activeDot === 1 ? 'translateX(-100%)' : 'translateX(0)',
+            transform: activeDot === 1 
+              ? { xs: 'translateY(-300%)', md: 'translateX(-100%)' } // Move up on mobile, left on larger screens
+              : 'translateY(0)', // Reset position on mobile, default on larger screens
             opacity: activeDot === 1 ? 1 : 1,
             marginLeft: 0,
             padding: 4,
+            transition: 'all 0.8s ease-in-out', // Ensure smooth transition
           }}
         >
           <Typography variant="body1">{descriptions[activeDot]}</Typography>
         </AnimatedBox>
       </Stack>
+
     </Box>
   );
 };

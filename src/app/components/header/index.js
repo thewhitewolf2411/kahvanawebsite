@@ -33,7 +33,7 @@ const Header = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     backgroundColor: theme.palette.secondary.main,
     width: "90% !important",
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(5), // Default for larger screens
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: theme.spacing(2),
@@ -41,8 +41,11 @@ const Header = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 3),
     display: "flex",
     alignItems: "center",
+    [theme.breakpoints.down('sm')]: {
+      marginTop: theme.spacing(10), // Increased marginTop for mobile
+    },
   },
-}))
+}));
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)

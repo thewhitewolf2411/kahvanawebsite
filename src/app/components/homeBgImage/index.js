@@ -95,7 +95,13 @@ const HomeBgImage = () => {
         <Box mt={40}>
           <Typography
             variant="h1"
-            sx={{ fontWeight: 600, width: '600px', mx: 'auto' }}
+            sx={{
+              fontWeight: 600,
+              width: '100%', // Use 100% width on mobile
+              mx: 'auto', // Center horizontally
+              fontSize: { xs: '2rem', sm: '3rem', md: '4rem' }, // Adjust font size for different breakpoints
+              textAlign: 'center', // Center the text on all devices
+            }}
           >
             {displayedText}
           </Typography>
