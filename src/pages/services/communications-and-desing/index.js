@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import DividerText from './DividerText';
+import DividerText from '../../../app/components/dividerText';
 import Image from 'next/image';
 import servicesPageBg from '../../../app/_static/servicesPageBg.jpg';
 import { useRouter } from 'next/router';
