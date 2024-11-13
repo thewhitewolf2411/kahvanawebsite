@@ -182,6 +182,8 @@ function App() {
                         backgroundColor: '#fff',
                         mb: 2,
                         borderRadius: 2,
+                        flexDirection: { xs: 'column', sm: 'row' },  // Stack text below image on mobile
+                        textAlign: { xs: 'center', sm: 'left' },     // Center text for mobile
                       }}
                     >
                       <Avatar src={reviewer.avatar} sx={{ height: '150px', width: '150px' }} />
@@ -207,7 +209,11 @@ function App() {
                   : 'Our IT company specializes in delivering cutting-edge software solutions tailored to meet the specific needs of our clients. We provide a wide range of services, including custom application development, web design and development, as well as the implementation of complex IT infrastructure solutions.'}
               </Typography>
     
-              <Box py={4} sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '20px' }}>
+              <Box py={4} sx={{ 
+                display: 'grid', 
+                gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' }, // Single column on mobile, three columns on larger screens
+                gridGap: '20px' 
+              }}>
                 {workAreas.map((work, i) => (
                   <Box key={i}>
                     <Box
@@ -228,6 +234,7 @@ function App() {
                   </Box>
                 ))}
               </Box>
+
             </Box>
           )}
         </Box>

@@ -79,6 +79,7 @@ const WhyChooseUs = () => {
           }}>
           {[0, 1, 2].map((index) => (
             <Typography
+              key={index}
               variant="h5"
               sx={{
                 color: activeDot === index ? 'white' : 'gray',

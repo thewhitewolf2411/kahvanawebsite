@@ -49,7 +49,15 @@ const Services = () => {
       <Box sx={{ marginTop: 8 }} />
       <DividerText>{language === 'bh' ? 'Usluge' : 'Services'}</DividerText>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, marginTop: 8 }}>
-        <Box sx={{ px: 8, py: 6, display: 'flex', gap: 4 }}>
+      <Box 
+          sx={{ 
+            px: 8, 
+            py: 6, 
+            display: 'flex', 
+            gap: 4, 
+            flexDirection: { xs: 'column', md: 'row' }  // Switch to column on mobile, row on larger screens
+          }}
+        >
           {localizedServices.map((service, index) => (
             <Box
               key={index}
@@ -59,6 +67,7 @@ const Services = () => {
                 textAlign: 'left',
                 transition: 'all 0.3s ease-in-out',
                 borderRadius: 2,
+                position: 'relative', // Needed for the ::after divider line
                 '&:hover': {
                   backgroundColor: '#ffffff',
                   color: '#000000',
@@ -73,6 +82,7 @@ const Services = () => {
                   width: '1px',
                   backgroundColor: '#fff',
                   opacity: 0.2,
+                  display: { xs: 'none', md: 'block' } // Hide the divider line on mobile
                 },
               }}
             >

@@ -1,6 +1,5 @@
-'use client';
-import * as React from 'react';
-import { useRouter } from 'next/navigation'
+import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTheme } from '@mui/styles';
 import Image from 'next/image';
 import AppBar from '@mui/material/AppBar';
@@ -12,11 +11,11 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import logo from '../../_static/logo.png';
-import bhLogo from '../../_static/icon_BH.png'
-import ukLogo from '../../_static/icon_UK.png'
 import { styled } from '@mui/material/styles';
 import { Divider } from '@mui/material';
+import logo from '../../_static/logo.png';
+import bhLogo from '../../_static/icon_BH.png';
+import ukLogo from '../../_static/icon_UK.png';
 import { SidebarContext } from '../../context/languageContext';
 import { bhStrings } from '../../_languages/bh';
 import { enStrings } from '../../_languages/en';
@@ -25,56 +24,74 @@ const PREFIX = 'header';
 
 const classes = {
   root: `${PREFIX}-root`,
-  cta: `${PREFIX}-cta`,
-  content: `${PREFIX}-content`,
-}
+};
 
-const Header = styled('div')(({ theme }) => ({
+const Header = styled('div')(({ theme, scrolled }) => ({
   [`&.${classes.root}`]: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "#fff",
     width: "90% !important",
-    marginTop: theme.spacing(5), // Default for larger screens
+    marginTop: theme.spacing(5),
     marginLeft: "auto",
     marginRight: "auto",
-    borderRadius: theme.spacing(2),
+    borderRadius: theme.shape.borderRadius * 2,
     height: theme.spacing(10),
     padding: theme.spacing(0, 3),
     display: "flex",
     alignItems: "center",
+    transition: 'top 0.3s ease',  // Smooth transition when sticking
     [theme.breakpoints.down('sm')]: {
-      marginTop: theme.spacing(10), // Increased marginTop for mobile
+      marginTop: scrolled ? theme.spacing(0) : theme.spacing(10),
     },
   },
 }));
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const router = useRouter()
-  const theme = useTheme()
-  const { language, setLanguage } = React.useContext(SidebarContext)
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const router = useRouter();
+  const theme = useTheme();
+  const { language, setLanguage } = useContext(SidebarContext);
 
   const pages = [
     { name: language === "bh" ? bhStrings.home : enStrings.home, path: "/" },
     { name: language === "bh" ? bhStrings.about : enStrings.about, path: "/about" },
     { name: language === "bh" ? bhStrings.careers : enStrings.careers, path: "/careers" },
-    { name: language === "bh" ? bhStrings.contact : enStrings.contact, path: "/#contact" }
+    { name: language === "bh" ? bhStrings.contact : enStrings.contact, path: "/#contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 150); // Toggle sticky after 50px of scroll
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   const handleHeaderOptionClick = (pathname) => {
-    router.push(pathname)
-  }
+    router.push(pathname);
+    handleCloseNavMenu();
+  };
 
   return (
-    <AppBar position="fixed" sx={{background: "transparent", zIndex: 20, boxShadow: "none"}}>
-      <Header maxWidth="xl" className={classes.root}>
+    <AppBar 
+      position="fixed" 
+      sx={{ 
+        background: isSticky ? "#fff" : "transparent", 
+        zIndex: 20, 
+        boxShadow: isSticky ? "0px 4px 10px rgba(0, 0, 0, 0.1)" : "none", 
+        top: isSticky ? 0 : undefined 
+      }}
+    >
+      <Header maxWidth="xl" className={classes.root} scrolled={isSticky}>
         <Toolbar disableGutters sx={{ width: "100%", justifyContent: "space-between" }}>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -104,18 +121,13 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: 'block', md: 'none' }, "& ul": { backgroundColor: "#F9F8FED9" } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu} sx={{ color: theme?.palette?.primary?.main }}>
+                <MenuItem key={page.name} onClick={() => handleHeaderOptionClick(page.path)} sx={{ color: theme?.palette?.primary?.main }}>
                   <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Image
-            src={logo}
-            alt="Logo"
-            width={122} // Set the desired width
-            height={38} // Set the desired height
-          />
+          <Image src={logo} alt="Logo" width={122} height={38} />
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -131,18 +143,18 @@ function ResponsiveAppBar() {
           <Box sx={{ display: "flex" }}>
             <Image
               src={bhLogo}
-              alt="Logo"
-              width={19} // Set the desired width
-              height={13} // Set the desired height
+              alt="BH Language"
+              width={19}
+              height={13}
               style={{ cursor: "pointer" }}
               onClick={() => setLanguage("bh")}
             />
             <Divider orientation="vertical" variant="middle" flexItem />
             <Image
               src={ukLogo}
-              alt="Logo"
-              width={18} // Set the desired width
-              height={13} // Set the desired height
+              alt="EN Language"
+              width={18}
+              height={13}
               style={{ cursor: "pointer" }}
               onClick={() => setLanguage("en")}
             />
@@ -150,6 +162,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Header>
     </AppBar>
-  )
+  );
 }
-export default ResponsiveAppBar
+
+export default ResponsiveAppBar;

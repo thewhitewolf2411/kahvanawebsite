@@ -39,7 +39,7 @@ const Footer = () => {
     <Box
       sx={{
         backgroundImage: `url(${mapBg.src})`,
-        backgroundSize: '100% 100%',
+        backgroundSize: { xs: 'cover', md: '100% 100%' },
         backgroundPosition: 'center',
         color: '#fff',
         py: 4,
@@ -61,46 +61,63 @@ const Footer = () => {
 
       <Box sx={{ position: 'relative', zIndex: 1 }}>
         {/* First address section */}
-        <Box sx={{display: 'flex', justifyContent: 'space-between', padding: 8}}>
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" sx={{ mb: 2 }}>Head Office</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FaMapMarkerAlt size={20} style={{ marginRight: 8 }} />
-              <Typography>USA</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FaPhone size={20} style={{ marginRight: 8 }} />
-              <Typography>+387 62678989</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FaEnvelope size={20} style={{ marginRight: 8 }} />
-              <Typography>info@kahvana.com</Typography>
-            </Box>
-            <Typography sx={{ mb: 2 }}>651 N Broad St, Suite 201</Typography>
-            <Typography>Middletown, DE 19709 USA</Typography>
-          </Box>
+        <Box 
+  sx={{ 
+    display: 'flex', 
+    justifyContent: 'space-between', 
+    padding: 8, 
+    flexDirection: { xs: 'column', md: 'row' },  // Stack vertically on mobile
+    alignItems: { xs: 'center', md: 'flex-start' } // Center-align on mobile for a balanced look
+  }}
+>
+  <Box sx={{ mb: { xs: 4, md: 0 } }}> {/* Bottom margin only on mobile */}
+    <Typography variant="h6" sx={{ mb: 2 }}>Head Office</Typography>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <FaMapMarkerAlt size={20} style={{ marginRight: 8 }} />
+      <Typography>USA</Typography>
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <FaPhone size={20} style={{ marginRight: 8 }} />
+      <Typography>+387 62678989</Typography>
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <FaEnvelope size={20} style={{ marginRight: 8 }} />
+      <Typography>info@kahvana.com</Typography>
+    </Box>
+    <Typography sx={{ mb: 2 }}>651 N Broad St, Suite 201</Typography>
+    <Typography>Middletown, DE 19709 USA</Typography>
+  </Box>
 
-          {/* Divider */}
-          <Divider orientation="vertical" sx={{ borderColor: '#FF3179', borderRight: "1px solid #ff3179", height: 180 }} />
+  {/* Divider */}
+  <Divider 
+    orientation="vertical" 
+    sx={{ 
+      borderColor: '#FF3179', 
+      borderRight: "1px solid #ff3179", 
+      height: 180, 
+      display: { xs: 'none', md: 'block' }  // Hide divider on mobile
+    }} 
+  />
 
-          {/* Second address section */}
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" sx={{ mb: 2 }}>Admin Office</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FaMapMarkerAlt size={20} style={{ marginRight: 8 }} />
-              <Typography>Bosnia and Herzegovina</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FaPhone size={20} style={{ marginRight: 8 }} />
-              <Typography>+387 62678989</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FaEnvelope size={20} style={{ marginRight: 8 }} />
-              <Typography>info@kahvana.com</Typography>
-            </Box>
-            <Typography sx={{ mb: 2 }}>Marsala Tita 54, 71000 Sarajevo</Typography>
-          </Box>
-        </Box>
+  {/* Second address section */}
+  <Box sx={{ mt: { xs: 4, md: 0 } }}> {/* Top margin only on mobile */}
+    <Typography variant="h6" sx={{ mb: 2 }}>Admin Office</Typography>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <FaMapMarkerAlt size={20} style={{ marginRight: 8 }} />
+      <Typography>Bosnia and Herzegovina</Typography>
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <FaPhone size={20} style={{ marginRight: 8 }} />
+      <Typography>+387 62678989</Typography>
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <FaEnvelope size={20} style={{ marginRight: 8 }} />
+      <Typography>info@kahvana.com</Typography>
+    </Box>
+    <Typography sx={{ mb: 2 }}>Marsala Tita 54, 71000 Sarajevo</Typography>
+  </Box>
+</Box>
+
         {/* Footer Navigation Links */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           {pages.map((page) => (
