@@ -100,7 +100,6 @@ const WebApplicationPage = () => {
                   height={200}
                 />
               </Box>
-              <Typography variant="h6">{project.title}</Typography>
             </Box>
           ))}
         </Box>
