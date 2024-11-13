@@ -8,7 +8,7 @@ import partyPooper from "../../_static/party_pooper.png";
 export default function Banner() {
   const { language } = React.useContext(SidebarContext)
   return (
-    <Box sx={{ background: "#FF3179", padding: "4px", display: "flex", justifyContent: "center" }}>
+    <Box sx={{ background: "#FF3179", padding: "4px", display: "flex", justifyContent: "center", textAlign: "center" }}>
       <Image
         src={partyPooper}
         alt="Logo"

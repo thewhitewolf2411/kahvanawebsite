@@ -9,7 +9,7 @@ import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
 
-  const [language, setLanguage] = React.useState("bh")
+  const [language, setLanguage] = React.useState("en")
 
   return (
     <SidebarContext.Provider value={{ language, setLanguage }}>

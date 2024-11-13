@@ -106,7 +106,7 @@ const HomeBgImage = () => {
             {displayedText}
           </Typography>
         </Box>
-        <Box mt={3} mb={3}>
+        <Box mt={3} mb={3} px={4}>
           <Typography variant="h6">
             {language === "bh" ? bhStrings.homeSubtitle1 : enStrings.homeSubtitle1}
           </Typography>
