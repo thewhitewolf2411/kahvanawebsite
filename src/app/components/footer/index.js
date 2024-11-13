@@ -132,13 +132,13 @@ const Footer = () => {
 
         {/* Social Media Icons */}
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, marginTop: 2 }}>
-          <IconButton component="a" href="https://www.facebook.com" target="_blank" sx={{ color: 'white' }}>
+          <IconButton component="a" href="https://www.facebook.com/share/15Lsa57j1t/?mibextid=LQQJ4d" target="_blank" sx={{ color: 'white' }}>
             <FaFacebook size={30} />
           </IconButton>
-          <IconButton component="a" href="https://www.instagram.com" target="_blank" sx={{ color: 'white' }}>
+          <IconButton component="a" href="https://www.instagram.com/kahvanainc?igsh=bXFlZXc1ZHpyOGRw" target="_blank" sx={{ color: 'white' }}>
             <FaInstagram size={30} />
           </IconButton>
-          <IconButton component="a" href="https://www.linkedin.com" target="_blank" sx={{ color: 'white' }}>
+          <IconButton component="a" href="https://www.linkedin.com/company/kahvana/" target="_blank" sx={{ color: 'white' }}>
             <FaLinkedin size={30} />
           </IconButton>
         </Box>
