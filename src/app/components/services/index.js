@@ -2,40 +2,47 @@ import React, { useContext } from 'react';
 import { Box, Typography, Divider, Link } from '@mui/material';
 import DividerText from '../dividerText';
 import { SidebarContext } from '../../context/languageContext';
+import { useRouter } from 'next/router';
 
 const services = {
   en: [
     { 
       title: 'Web Applications', 
       description: 'Solutions that enhance your business.',
-      details: 'Our web app solutions are designed to improve the efficiency of your business, whether for internal tools or customer-facing apps. We create secure, fast, and tailored applications that fit your specific needs.' 
+      details: 'Our web app solutions are designed to improve the efficiency of your business, whether for internal tools or customer-facing apps. We create secure, fast, and tailored applications that fit your specific needs.' ,
+      url: '/services/web-applications'
     },
     { 
       title: 'Marketing', 
       description: 'Campaigns that build long-term connections.',
-      details: 'Through tailored marketing strategies, we help your brand build recognition and engagement in the market. Our goal is to create content that connects your audience to your brand on a deeper, emotional level.' 
+      details: 'Through tailored marketing strategies, we help your brand build recognition and engagement in the market. Our goal is to create content that connects your audience to your brand on a deeper, emotional level.',
+      url: '/services/marketing'
     },
     { 
       title: 'Communications and Design', 
       description: 'Visual identity that takes your breath away.',
-      details: 'We create designs that not only look great but also communicate with your customers. Our service includes everything from brand identity to digital content, ensuring recognition and a strong connection with your audience.' 
+      details: 'We create designs that not only look great but also communicate with your customers. Our service includes everything from brand identity to digital content, ensuring recognition and a strong connection with your audience.',
+      url: '/services/communications-and-design'
     },
   ],
   bh: [
     { 
       title: 'Web aplikacije', 
       description: 'Rješenja koja unapređuju vaše poslovanje.',
-      details: 'Naša rješenja za web aplikacije osmišljena su da unaprijede efikasnost vašeg poslovanja, bilo da se radi o alatima za unutrašnju upotrebu ili aplikacijama za korisnike. Razvijamo aplikacije koje su sigurne, brze i prilagođene vašim specifičnim potrebama.' 
+      details: 'Naša rješenja za web aplikacije osmišljena su da unaprijede efikasnost vašeg poslovanja, bilo da se radi o alatima za unutrašnju upotrebu ili aplikacijama za korisnike. Razvijamo aplikacije koje su sigurne, brze i prilagođene vašim specifičnim potrebama.' ,
+      url: '/services/web-applications'
     },
     { 
       title: 'Marketing', 
       description: 'Kampanje koje grade dugoročne veze.',
-      details: 'Kroz prilagođene marketinške strategije, pomažemo vašem brendu da izgrade prepoznatljivost i angažman na tržištu. Naš cilj je da stvorimo sadržaj koji povezuje vašu publiku s vašim brendom na dubljoj, emocionalnoj razini.' 
+      details: 'Kroz prilagođene marketinške strategije, pomažemo vašem brendu da izgrade prepoznatljivost i angažman na tržištu. Naš cilj je da stvorimo sadržaj koji povezuje vašu publiku s vašim brendom na dubljoj, emocionalnoj razini.',
+      url: '/services/marketing'
     },
     { 
       title: 'Komunikacije i dizajn', 
       description: 'Vizualni identitet koji oduzima dah.',
-      details: 'Kreiramo dizajn koji ne samo da izgleda dobro, već i komunicira s vašim kupcima. Naša usluga uključuje dizajniranje svega, od identiteta brenda do digitalnog sadržaja, stvarajući prepoznatljivost i snažnu vezu sa vašom publikom.' 
+      details: 'Kreiramo dizajn koji ne samo da izgleda dobro, već i komunicira s vašim kupcima. Naša usluga uključuje dizajniranje svega, od identiteta brenda do digitalnog sadržaja, stvarajući prepoznatljivost i snažnu vezu sa vašom publikom.',
+      url: '/services/communications-and-design'
     },
   ]
 };
@@ -43,6 +50,11 @@ const services = {
 const Services = () => {
   const { language } = useContext(SidebarContext); // Access current language from context
   const localizedServices = services[language]; // Get services for the selected language
+  const router = useRouter();
+
+  const handleLinkOnClick = (pathname) => {
+    router.push(pathname);
+  }
 
   return (
     <Box sx={{ py: 6, color: '#fff', textAlign: 'center', marginBottom: 8 }}>
@@ -60,6 +72,7 @@ const Services = () => {
         >
           {localizedServices.map((service, index) => (
             <Box
+              onClick={() => handleLinkOnClick(service.url)}
               key={index}
               sx={{
                 flex: 1,
@@ -91,7 +104,7 @@ const Services = () => {
               </Typography>
               <Divider sx={{ backgroundColor: '#fff', my: 2, width: '50px' }} />
               <Typography sx={{ mb: 3 }}>{service.description}</Typography>
-              <Link 
+              <Link
                 color='#fff' 
                 underline="hover" 
                 sx={{ color: 'inherit', textDecoration: 'none' }}

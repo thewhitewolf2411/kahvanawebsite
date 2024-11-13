@@ -139,7 +139,7 @@ function App() {
         {/* Tab Content */}
         <Box sx={{ xs: 12, md: 8, px: 4 }}>
           <Typography variant="h4" sx={{ my: 6, textAlign: 'center', fontWeight: 600 }}>
-            {selectedTab === 1 && (language === 'bh' ? 'Područija rada' : 'Areas of work')}
+            {selectedTab === 1 && (language === 'bh' ? 'Područja rada' : 'Areas of work')}
           </Typography>
     
           {selectedTab === 0 && (

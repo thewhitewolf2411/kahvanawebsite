@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         <Layout>
           <Head>
             <title>Kahvana</title>
-            <meta name="description" content="Kahvana" />
+            <meta name="description" content="We code, we solve, we laugh. Every bug has its story." />
           </Head>
           <Component {...pageProps} />
         </Layout>
