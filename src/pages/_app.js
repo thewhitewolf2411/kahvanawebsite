@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
+import "../app/_global/globals.css"
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import Layout from "../app/components/layout"

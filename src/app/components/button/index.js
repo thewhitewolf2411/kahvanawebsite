@@ -26,9 +26,9 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const GetInTouchButton = () => {
+const GetInTouchButton = ({ clickHandler }) => {
   return (
-    <StyledButton endIcon={<SendIcon />}>
+    <StyledButton onClick={clickHandler} endIcon={<SendIcon />}>
       Get in touch
     </StyledButton>
   );

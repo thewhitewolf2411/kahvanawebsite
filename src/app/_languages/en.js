@@ -10,4 +10,12 @@ export const enStrings = {
     homeTitleP3: "better.",
     homeSubtitle1: "Software Engineering - Data Enhancement and",
     homeSubtitle2: "Psychographic Analysis - Graphic Design and Print",
+    servicesDevelopment: "Development",
+    servicesDevelopmentDescription: "We offer mobile & web development",
+    servicesMarketing: "Marketing",
+    servicesMarketingDescription: "We offer marketing & digital support",
+    servicesUIUX: "UI/UX",
+    servicesUIUXDescription: "We offer UI & UX design",
+    servicesSEO: "SEO",
+    servicesSEODescription: "We offer SEO & other services",
 }
